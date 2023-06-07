@@ -1,17 +1,33 @@
 package java101;
 
+import java.util.Scanner;
+
 public class Example {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		for (int i = 2; i <= 100; i++) {
-			boolean asal = true;
-			for (int j = 2; j < i; j++) {
-				if (i % j == 0)
-					asal = false;
+	public class AsalSayiRecursive {
+
+		public static void main(String[] args) {
+			Scanner scanner = new Scanner(System.in);
+			System.out.print("Bir sayı girin: ");
+			int sayi = scanner.nextInt();
+
+			if (isAsal(sayi, sayi / 2)) {
+				System.out.println(sayi + " asal bir sayıdır.");
+			} else {
+				System.out.println(sayi + " asal bir sayı değildir.");
 			}
-			if (asal == true)
-				System.out.print(" " + i + " ");
+		}
+
+		public static boolean isAsal(int sayi, int i) {
+			if (i == 1) {
+				return true;
+			} else {
+				if (sayi % i == 0) {
+					return false;
+				} else {
+					return isAsal(sayi, i - 1);
+				}
+			}
 		}
 	}
 
